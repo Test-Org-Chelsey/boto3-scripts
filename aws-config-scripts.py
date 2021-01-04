@@ -20,21 +20,24 @@ client = boto3.client('config')
 # triggers the evaluation of the set of the given set of rules
 startEvaluation = client.start_config_rules_evaluation(
     ConfigRuleNames=[
-        'required-tags',
+        'required-tags', 'cloudformation-stack-notification-check', 'iam-password-policy', 'cloud-trail-cloud-watch-logs-enabled', 'codepipeline-deployment-count-check', 'access-keys-rotated'
     ]
 )
 
-response = client.describe_config_rules(
-    ConfigRuleNames=[
-        'required-tags',
-    ],
-)
+# response = client.describe_config_rules(
+#     ConfigRuleNames=[
+#         'required-tags', 'cloudformation-stack-notification-check', 'iam-password-policy', 'cloud-trail-cloud-watch-logs-enabled', 'codepipeline-deployment-count-check', 'access-keys-rotated'
+#     ],
+# )
 
-print 'response', response
+# print 'response', response
 
-describeAggregateCompliance = client.describe_aggregate_compliance_by_config_rules(
-    ConfigurationAggregatorName='string',
-    Limit=0,
-)
 
-print 'Aggregate Compliance By Config Rule:', describeAggregateCompliance
+# evaluationStatus = client.describe_config_rule_evaluation_status(
+#     ConfigRuleNames=[
+#         'required-tags', 'cloudformation-stack-notification-check', 'iam-password-policy', 'cloud-trail-cloud-watch-logs-enabled', 'codepipeline-deployment-count-check', 'access-keys-rotated'
+#     ],
+#     Limit=50
+# )
+
+# print 'EVALUATION STATUS: ', evaluationStatus
